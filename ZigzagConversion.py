@@ -8,14 +8,13 @@ class Solution(object):
         if numRows == 1:
             return s
 
+        s_len = len(s)
         row_inc = True
-        result_dict = {}
-        result = ""
+        result_list = [None] * s_len
 
         row = col = 0
-        for c in s:
-            print(f"row = {row}, col = {col} c = {c}")
-            result_dict[(row,col)] = c
+        for index, c in enumerate(s):
+            result_list[index] = (row, col, c)
             if row_inc:
                 row += 1
                 if row == numRows:
@@ -28,12 +27,8 @@ class Solution(object):
                     row_inc = True
                     row = 1
 
-        result_list = list(result_dict.keys())
         result_list.sort()
-        for value in result_list:
-            result += result_dict[value]
-
-        return result
+        return ''.join(value[2] for value in result_list)
 
 
 solution = Solution()
