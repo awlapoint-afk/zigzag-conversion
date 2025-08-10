@@ -12,22 +12,19 @@ class Solution(object):
         result_list = [None] * s_len
 
         row = col = index = 0
-        while True:
+        while index < s_len:
             while row < numRows and index < s_len:
                 result_list[index] = (row, col, s[index])
                 index += 1
                 row += 1
+
             row -= 2
             col += 1
-
             while row > 0 and index < s_len:
                 result_list[index] = (row, col, s[index])
                 index += 1
                 row -= 1
                 col += 1
-
-            if index == s_len:
-                break
 
         result_list.sort()
         return ''.join(value[2] for value in result_list)
