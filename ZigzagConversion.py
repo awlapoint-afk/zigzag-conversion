@@ -9,22 +9,22 @@ class Solution(object):
             return s
 
         s_len = len(s)
-        row_inc = True
+        increment_row = True
         result_list = [None] * s_len
 
         row = col = 0
         for index, c in enumerate(s):
             result_list[index] = (row, col, c)
-            if row_inc:
+            if increment_row:
                 row += 1
                 if row == numRows:
-                    row_inc = False
+                    increment_row = False
                     row -= 1
-            if not row_inc:
+            if not increment_row:
                 row -= 1
                 col += 1
                 if row < 0:
-                    row_inc = True
+                    increment_row = True
                     row = 1
 
         result_list.sort()
